@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Backend service optimizado
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        - BUILDKIT_INLINE_CACHE=1
+    container_name: node-backend-optimized
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/miapp
+      - PORT=3000
+      - NODE_OPTIONS=--max-old-space-size=512
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
+
+  # MongoDB service
+  mongodb:
+    image: mongo:6.0
+    container_name: mongo-db-optimized
+    environment:
+      - MONGO_INITDB_DATABASE=miapp
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Volúmenes para persistencia
+volumes:
+  mongodb_data:
+
+# Redes
+networks:
+  app-network:
+    driver: bridge
