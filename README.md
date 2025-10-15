@@ -1,4 +1,5 @@
-# Mi App Docker - Aplicación Node.js Ultra Optimizada
+# 🧩 Seguridad y Optimización de imágenes
+# Caso: Aplicación Node.js Ultra Optimizada
 
 ## 📋 Descripción
 Aplicación Node.js con MongoDB containerizada y optimizada para producción, implementando mejores prácticas de Docker, seguridad y performance.
