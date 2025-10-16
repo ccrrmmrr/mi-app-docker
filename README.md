@@ -157,16 +157,3 @@ docker ps
 curl http://localhost:3000/health
 ```
 
-## Capturas de pantalla
-
-```
-
-(https://github.com/ccrrmmrr/curso-docker-kubernetes-tareas/tree/main/clase5/screenshots/baseline.PNG)[- Escaneo antes de optimizar]
-(https://github.com/ccrrmmrr/curso-docker-kubernetes-tareas/tree/main/clase5/screenshots/ultimate01.PNG)[- Primer Escaneo después de optimizar]
-(https://github.com/ccrrmmrr/curso-docker-kubernetes-tareas/tree/main/clase5/screenshots/ultimate02.PNG)[- Segundo Escaneo después de optimizar]
-(https://github.com/ccrrmmrr/curso-docker-kubernetes-tareas/tree/main/clase5/screenshots/compare.PNG)[- Comparación de tamaños]
-(https://github.com/ccrrmmrr/curso-docker-kubernetes-tareas/tree/main/clase5/screenshots/healthy.PNG)[- Contenedor con status healthy]
-(https://github.com/ccrrmmrr/curso-docker-kubernetes-tareas/tree/main/clase5/screenshots/non_root.PNG)- [Verificación de usuario non-root]
-
-
-```
